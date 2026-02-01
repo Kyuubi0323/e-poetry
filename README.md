@@ -50,11 +50,11 @@ curl https://pyenv.run | bash
 >
 > Then export these only in this shell
 >
-```bash
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-```
+> ```bash
+> export PYENV_ROOT="$HOME/.pyenv"
+> export PATH="$PYENV_ROOT/bin:$PATH"
+> eval "$(pyenv init -)"
+> ```
 
 Once pyenv is installed, install the Python version of your choice. You may have to install some dependencies to get this to work.
 
