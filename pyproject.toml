@@ -1,0 +1,22 @@
+[project]
+name = "e-poetry"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Kyuubi0323",email = "khoi.nv202647@sis.hust.edu.vn"}
+]
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "numpy (==1.26.4)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+packages = [
+    { include = "mypackage", from = "src" }
+]
