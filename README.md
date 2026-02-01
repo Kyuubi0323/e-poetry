@@ -12,9 +12,6 @@ This guide will help you set up a Python project using Poetry for dependency man
 - [Managing Dependencies](#managing-dependencies)
 - [Running Your Project](#running-your-project)
 - [Working with Existing Poetry Projects](#working-with-existing-poetry-projects)
-- [Useful Poetry Commands](#useful-poetry-commands)
-- [Best Practices](#best-practices)
-- [Additional Resources](#additional-resources)
 
 
 ## Prerequisites
