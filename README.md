@@ -2,6 +2,21 @@
 
 This guide will help you set up a Python project using Poetry for dependency management. Whether you're creating a new project or contributing to an existing one, follow these steps to get started.
 
+
+## Table of Contents
+- [Prerequisites](#prerequisites)
+- [Installing Poetry](#installing-poetry)
+- [Configuring Poetry](#configuring-poetry)
+- [Creating a New Project](#creating-a-new-project)
+- [Setting Up Your Environment](#setting-up-your-environment)
+- [Managing Dependencies](#managing-dependencies)
+- [Running Your Project](#running-your-project)
+- [Working with Existing Poetry Projects](#working-with-existing-poetry-projects)
+- [Useful Poetry Commands](#useful-poetry-commands)
+- [Best Practices](#best-practices)
+- [Additional Resources](#additional-resources)
+
+
 ## Prerequisites
 
 ### 1. Install System Dependencies
@@ -33,22 +48,37 @@ sudo apt install -y \
 curl https://pyenv.run | bash
 ```
 
+> [!WARNING]
+> Disable others virtual environments first like (conda deactivate)
+>
+> Then export these only in this shell
+>
+```bash
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+```
+
 Once pyenv is installed, install the Python version of your choice. You may have to install some dependencies to get this to work.
 
 ```bash
 pyenv install 3.10.5
 pyenv shell 3.10.5
-exec $SHELL  # reload shell cache
+exec $SHELL  # reload shell cache 
 python --version 
 pyenv versions 
 ```
-For systems that do not meet the Poetry requirements (Python versions >=3.9), use pyenv to upgrade your Python version before installing Poetry.
+**Note:** For systems that do not meet Poetry's requirements (Python versions >=3.9), use pyenv to upgrade your Python version before installing Poetry.
 
+## Installing Poetry
 
+Now you are ready to install Poetry! First, make sure your system Python is selected. This ensures Poetry remains available even if you decide to remove a specific version of Python.
 
-Now you are ready to install Poetry! First, make sure your system Python is selected. This makes sure Poetry remains available even if you decide to remove a specific version of Python.
-
-
+```bash
+pyenv shell --unset
+pyenv global system
+pyenv versions
+```
 
 Then, [install Poetry](https://python-poetry.org/docs/master/#installation):
 
@@ -57,27 +87,29 @@ curl -sSL https://install.python-poetry.org | python3 -
 poetry --version
 ```
 
-That's it! You should be ready to get started setting up your project. First, return to the system Python version: 
-```bash
-pyenv shell --unset
-pyenv global system
-pyenv versions
-```
+## Configuring Poetry
 
-Before you do, I recommend configuring Poetry to create its virtual environments [in your project directory](https://python-poetry.org/docs/configuration/#virtualenvsin-project). This step is completely optional.
+I recommend configuring Poetry to create its virtual environments [in your project directory](https://python-poetry.org/docs/configuration/#virtualenvsin-project). This step is completely optional but makes project management easier:
 
 ```bash
 poetry config virtualenvs.in-project true
 ```
 
-Now jump into practice. If you're the one creating the project:
+## Creating a New Project
+
+There are two ways to create a new Poetry project:
+
+### Option 1: Initialize in Existing Directory
+
+If you already have a project directory:
+
 ```bash
-cd ~/e-poetry
-pyenv local 3.10.5  # or whatever version you want to use with that project 
-poetry init 
+cd ~/my_project
+pyenv local 3.10.5  # or whatever version you want to use with this project 
+poetry init
 ```
-or you can create the suggest structure from poetry with 
-### Option 2: Create Project with Recommended Structure
+
+### Option 2: Create New Project with Recommended Structure
 
 Use Poetry to create a new project with the recommended structure:
 
@@ -159,6 +191,17 @@ poetry add numpy==1.26.4  # Add a specific version
 poetry add --group dev pytest  # Add a dev dependency
 ```
 
+## Running Your Project
+
+### Activate Virtual Environment
+
+You can activate the Poetry virtual environment:
+
+```bash
+poetry shell
+```
+
+### Run Commands Directly
 
 Or run commands directly without activating the environment:
 ```bash
@@ -194,6 +237,7 @@ If you're cloning someone else's Poetry project:
 ```bash
 git clone <repository-url>
 cd project
+poetry config virtualenvs.in-project true
 poetry install
 ```
 
