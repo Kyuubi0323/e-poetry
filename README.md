@@ -225,19 +225,6 @@ poetry export -f requirements.txt --output requirements.txt  # Export to require
 4. **Use `poetry shell`**: Activates the environment for your current terminal session
 5. **Keep Poetry updated**: Run `poetry self update` regularly
 
-## Troubleshooting
-
-### Remove .venv from Git (if accidentally committed)
-
-If you accidentally committed your virtual environment:
-
-```bash
-git rm -r --cached .venv
-git commit -m "Remove .venv from tracking"
-```
-
-The `--cached` flag removes it from git's index but keeps your local files.
-
 ## Additional Resources
 
 - [Poetry Documentation](https://python-poetry.org/docs/)
